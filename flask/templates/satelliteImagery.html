@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<style>
+    * {
+        font-family: Math;
+    }
+
+    body {
+        background: linear-gradient(90deg, rgb(181 216 219), rgb(79, 131, 150), rgb(5 65 76));
+        margin: 0; 
+    }
+
+    h2 {
+        text-align: center;
+        justify-content: center;
+        padding: 30px;
+        margin-top: 5px;
+        font-size: 50px;
+        font-weight: bold;
+    }
+
+    #results {
+        text-align: center;
+        font-size: 30px;
+    }
+
+    label {
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .upload-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .upload-form {
+        width: 45%; 
+    }
+
+    .results-container {
+        width: 45%; 
+    }
+
+    .uploaded-image {
+        max-width: 100%;
+        height: auto;
+        margin-top: 10px;
+    }
+    hr {
+        color: rgb(27, 27, 27);
+        background-color: rgb(38, 37, 37);
+        height: 0.5px;
+        margin: 20px 0;
+    }
+</style>
+<body>
+
+<h2>Satellite Monitoring</h2>
+<hr>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col upload-container">
+            <div class="upload-form">
+                <form id="upload-form" action="/predict_image" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="image" class="l1">Select image to upload:</label>
+                        <input type="file" class="form-control-file" name="file" id="image">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Upload Image</button>
+                </form>
+            </div>
+            <div class="results-container">
+                <div id="results">Results : </div>
+                <img id="uploaded-image" src="" alt="Uploaded image will appear here." class="uploaded-image" style="display: none;">
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.getElementById('upload-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+        fetch('/predict_image', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            var resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+            resultsDiv.innerHTML += '<p>Did disaster occur: ' + data.prediction_damage + '</p>';
+            resultsDiv.innerHTML += '<p>Disaster: ' + data.prediction_disaster + '</p>';
+            resultsDiv.innerHTML += '<p>Damage: ' + data.prediction_regional + '</p>';
+            
+            var uploadedImage = document.getElementById('uploaded-image');
+            uploadedImage.src = data.image_url + '?' + new Date().getTime();
+            uploadedImage.style.display = 'block';
+        })
+        .catch(error => console.error(error));
+    });
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

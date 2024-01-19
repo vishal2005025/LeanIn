@@ -1,0 +1,9 @@
+node_modules
+.env
+flask/models/sat/
+flask/models/fire_prediction_model.pkl
+flask/models/flood_prediction.pkl
+flask/models/my_model.h5
+flask/models/disaster_model.h5
+flask/models/damage_eval_model.h5
+flask/models/message_model.pkl

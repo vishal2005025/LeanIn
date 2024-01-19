@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+* {
+    font-family: "Poppins", Arial, Helvetica, sans-serif, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+
+    background-color: rgb(26 45 93);
+    padding: 1% 2% 1%;
+}
+
+#title {
+    font-weight: 600;
+    font-size: 2.5rem;
+    color: aliceblue;
+}
+
+#survey-form {
+    display: flex;
+    flex-direction: column;
+
+    border: 2px inset #000000;
+    border-radius: 10px;
+    /* box-shadow: -10px 10px 12px -2px #bae8fc; */
+
+    background-color: rgb(200 200 200 / 83%);
+
+    padding: .5vw 5vw 2vw;
+    margin: 2vw 0;
+
+    width: 50vw;
+    }
+
+    .form-label {
+    font-weight: 500;
+    font-size: 1.4rem;
+
+    margin-top: 2vh;
+    margin-left: 10px;
+}
+
+.form-label span {
+    font-variant: small-caps;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.user-input {
+    min-height: 5vh;
+    font-size: 1.1rem;
+    font-weight: 300;
+
+    border: 2px solid #020f3c;
+    border-radius: 15px;
+
+    padding: .2rem .5rem;
+}
+
+.radio-btn-holder, .checkbox-holder {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.radio-btn-input, .checkbox-input {
+    width: 1.5rem;
+    margin: 0 1%;
+}
+
+#description {
+    text-align: center;
+    font-style: italic;
+}
+
+#comment-label {
+    min-height: 30vh;
+}
+
+#submit {
+    width: 10vw;
+    height: 3vw;
+    font-size: 1rem;
+    margin: 4% 1% 0;
+    float: right;
+    border: 2px solid #02022c;
+    border-radius: 15px;
+    background-color: #edf6f3;
+}
+
+#submit:hover {
+    background-color: #254372;
+    cursor: pointer;
+    font-weight: 500;
+    color: #c4f2f9;
+}
+</style>
+<body>
+    <h1 id="title">Volunteer Registration Form</h1>
+    <form id="survey-form">
+        <label class="form-label" for="name" id="name-label">Name</label>
+        <input class="user-input" id="name" type="text" placeholder="John Doe" required>
+
+        <label class="form-label" for="email" id="email-label">Email</label>
+        <input class="user-input" id="email" type="email" placeholder="jdoe@email.com" required>
+
+        <label class="form-label" for="number" id="number-label">Age</label>
+        <input class="user-input" id="number" type="number" min="1" max="99" placeholder="0">
+
+        <label class="form-label" for="address">Address</label>
+        <input class="user-input" id="address" type="text" placeholder="201, Shiv Sadan..." required>
+
+        <label class="form-label">Do you have any health issue?</label>
+
+        <div class="radio-btn-holder">
+            <input class="user-input radio-btn-input" id="btn-yes" name="food-bool" type="radio" value="radio-btn-yes" placeholder="Yes">
+            <label for="btn-yes" class="radio-btn-label">Yes</label>
+        </div>
+
+        <div class="radio-btn-holder">
+            <input class="user-input radio-btn-input" id="btn-no" name="food-bool" type="radio" value="radio-btn-no" placeholder="No">
+            <label for="btn-no" class="radio-btn-label">No</label>
+        </div>
+        <label for="form-label">If yes, what is the health issue?</label>
+        <input type="text" class="user-input" placeholder="Diabetes, Asthma,...">
+
+        <label class="form-label">What is your profession?</label>
+        <input type="text" class="user-input" id="profession" placeholder="Student, Teacher,..." required>
+
+        <label class="form-label">Kindly provide your Adhaar Card number.</label>
+        <input type="number" class="user-input" id="acNo" placeholder="301******" required>
+
+        <label class="form-label" for="comment-label">Anything else to add?</label>
+        <textarea class="user-input" id="comment-label" maxlength="600" placeholder="Additional comments here..."></textarea>
+
+        <div class="submit-holder">
+            <button id="submit" type="submit">Submit</button>
+        </div>
+    </form>
+</body>
+</html>

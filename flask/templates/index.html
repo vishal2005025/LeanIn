@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Disaster Classification</h2>
+
+<form id="upload-form" action="/predict_image" method="post" enctype="multipart/form-data">
+  Select image to upload:
+  <input type="file" name="file" id="image">
+  <input type="submit" value="Upload Image" name="submit">
+</form>
+
+<div id="results"></div>
+<img id="uploaded-image" src="" alt="Uploaded image will appear here." style="display: none;">
+
+<script>
+document.getElementById('upload-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var formData = new FormData(this);
+  fetch('/predict_image', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+    var resultsDiv = document.getElementById('results');
+    resultsDiv.innerHTML = '';
+    resultsDiv.innerHTML += '<p>Damage: ' + data.prediction_damage + '</p>';
+    resultsDiv.innerHTML += '<p>Disaster: ' + data.prediction_disaster + '</p>';
+    resultsDiv.innerHTML += '<p>Disaster: ' + data.prediction_regional + '</p>';
+    // for (var className in data.prediction_regional) {
+    //   resultsDiv.innerHTML += '<p>Regional Damage (' + className + '): ' + data.prediction_regional[className] + '</p>';
+    // }
+    var uploadedImage = document.getElementById('uploaded-image');
+    uploadedImage.src = data.image_url;
+    uploadedImage.style.display = 'block';
+  })
+  .catch(error => console.error(error));
+});
+</script>
+
+</body>
+</html>

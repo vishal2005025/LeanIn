@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Disaster Classification Result</h2>
+<p>Prediction: {{ prediction }}</p>
+<p>Confidence: {{ confidence }}</p>
+
+<img src="{{ url_for('static', filename='image.jpg') }}" alt="Uploaded Image">
+
+</body>
+</html>

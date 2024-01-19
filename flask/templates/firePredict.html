@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Prediction</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins-Regular', sans-serif;
+            text-align: center;
+            background: linear-gradient(90deg, #001e3f, #4562a0, #86b1dc);
+            color: #ffffff;
+        }
+
+        .heading_font {
+            font-size: 45px;
+            font-weight: normal;
+            padding: 24px;
+            margin: 0;
+        }
+
+        .description p {
+            font-style: italic;
+            font-size: 14px;
+            margin: -5px 0 0;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap; /* Added to allow items to wrap to the next line */
+            justify-content:space-around;
+            padding: 20px;
+        }
+
+        .col {
+            background: #ffffff;
+            overflow: hidden;
+            padding: 20px;
+            width: 100%; /* Changed to full width on mobile view */
+            margin-bottom: 20px; /* Added spacing between columns */
+            box-sizing: border-box; 
+        }
+
+        form {
+            margin-bottom: 18px;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+
+        #sub {
+            height: 50px;
+            text-align: center;
+            border-radius: 14px;
+            cursor: pointer;
+            width: 124px; /* Make button full width on mobile */
+            font-weight: 600;
+            font-size: larger;
+            background: #c9e8f9;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #sub:hover {
+            background-color: rgba(174, 171, 171, 0.904);
+            color: #06022d;
+        }
+
+        h3 {
+            margin-top: 10px;
+            margin-bottom: 5px;
+            text-align: justify;
+            color: #03293f;
+        }
+
+        .ans {
+            color: aliceblue;
+            font-weight: 500;
+            font-size: 50px;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            /* Apply styles for screens wider than 768px (PC) */
+            .col {
+                width: 45%; /* Set the width to 45% on larger screens */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Fire Prediction</h2>
+
+<form action="{{ url_for('predict_fire')}}" method="post" enctype="multipart/form-data">
+  <div class="row">
+    <div class="col">
+      <!-- Your form inputs here -->
+      <h3>Temperature in Celsius</h3>
+      <input id="first" name="Temperature" type="number" placeholder="Ex: 29">
+      <h3>Relative Humidity in %</h3>
+      <input id="second" name="RH" required="required" placeholder="Ex: 57">
+      <h3>Wind speed in km/h </h3>
+      <input id="third" name="Ws" required="required" placeholder="Ex: 18">
+      <h3>Rain: total day in mm:</h3>
+      <input id="fourth" name="Rain" required="required" placeholder="Ex: 1.3">
+      <h3>Fine Fuel Moisture Code (FFMC)</h3>
+      <input id="fifth" name="FFMC" required="required" placeholder="Ex: 65.7">
+    </div>
+    <div class="col">
+      <!-- Your form inputs here -->
+      <h3>Duff Moisture Code (DMC)</h3>
+      <input id="sixth" name="DMC" required="required" placeholder="Ex: 3.4">
+      <h3>Drought Code (DC)</h3>
+      <input id="seventh" name="DC" required="required" placeholder="Ex: 7.6">
+      <h3>Initial Spread Index (ISI)</h3>
+      <input id="eighth" name="ISI" required="required" placeholder="Ex: 1.3">
+      <h3>Buildup Index (BUI)</h3>
+      <input id="ninth" name="BUI" required="required" placeholder="Ex: 3.4">
+      <h3>Fire Weather Index (FWI)</h3>
+      <input id="tenth" name="FWI" required="required" placeholder="Ex: 0.5">
+    </div>
+  </div>
+  <button id="sub" type="submit">Predict</button>
+</form>
+
+<h3 class="ans">{{ prediction_text}}</h3>
+
+
+</html>

@@ -1,0 +1,79 @@
+<!-- views/map.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <title>Maps Project</title>
+
+    <style>
+        #map {
+            height: 800px;
+            width: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        const apiKey = 'pk.eyJ1IjoiYWxmcmVkMjAxNiIsImEiOiJja2RoMHkyd2wwdnZjMnJ0MTJwbnVmeng5In0.E4QbAFjiWLY8k3AFhDtErA';
+
+        const mymap = L.map('map').setView([18.504055388697367, 73.80745747188948], 13);
+
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: apiKey
+        }).addTo(mymap);
+
+        // Fetch locations from location.json
+        fetch('../location.json')
+            .then(response => response.json())
+            .then(locations => {
+                // Loop through locations and add markers to the map
+                locations.forEach(location => {
+                    const marker = L.marker([ location.latitude , location.longitude ]).addTo(mymap);
+
+                    // Add popup message
+                    const template = `<h3>Location</h3>
+                                      <p>Latitude: =` <% location.latitude %> `</p>
+                                      <p>Longitude: <%= location.longitude %></p>
+                                      <p>Timestamp: <%= location.timestamp %></p>`;
+
+                    marker.bindPopup(template);
+                    
+                });
+            // Add circles
+            const circles = [
+                    { coordinates: [18.504055388697367, 73.80745747188948], radius: 700 },
+                    { coordinates: [18.55436104195708, 73.75045032634333], radius: 650 },
+                    { coordinates: [18.466638164979486, 73.75533241590381], radius: 600 },
+                    { coordinates: [18.458143364850073, 73.84696154127289], radius: 550 },
+                ];
+
+                circles.forEach(circle => {
+                    L.circle(circle.coordinates, {
+                        radius: circle.radius,
+                        color: '#006400',
+                        fillColor: '#32cd32',
+                        fillOpacity: 0.2
+                    }).addTo(mymap);
+                });     
+            })
+            .catch(error => console.error('Error fetching locations:', error));
+
+            
+    </script>
+</body>
+
+</html>

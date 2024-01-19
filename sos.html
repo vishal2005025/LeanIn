@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Geo Location</title>
+</head>
+
+<body style="text-align: center; color:red; background-color: aliceblue;" onload="getLocationAndSend()">
+
+    <!-- <button onclick="getLocationAndSend()">Get and Send Location</button> -->
+   <H1 >SOS Sent Succesfully!!</H1>
+    <script>
+
+        function getLocationAndSend() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const { latitude, longitude } = position.coords;
+                        // console.log(latitude);
+                        // console.log(longitude);
+                        // console.log(p
+                        sendLocationToServer(latitude, longitude);
+                    },
+                    (error) => {
+                        console.error('Error getting location:', error.message);
+                    }
+                );
+            } else {
+                console.error('Geolocation is not supported by this browser.');
+            }
+        }
+
+        function sendLocationToServer(latitude, longitude) {
+           
+            const apiUrl = 'http://localhost:8000/api/sos-loc';
+
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ latitude, longitude }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log('Server response:', data);
+                    
+                })
+                .catch((error) => {
+                    console.log(latitude);
+                    console.error('Error sending location to server:', error);
+                });
+        }
+    </script>
+
+</body>
+
+</html>

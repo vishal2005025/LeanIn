@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Prediction</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins-Regular', sans-serif;
+            text-align: center;
+            background: linear-gradient(90deg, #00313b, #377782, #82c8d8);
+            color: #ffffff;
+        }
+
+        .heading_font {
+            font-size: 45px;
+            font-weight: normal;
+            padding: 12px;
+            margin: 0;
+        }
+
+        .description p {
+            font-style: italic;
+            font-size: 14px;
+            margin: -5px 0 0;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap; /* Added to allow items to wrap to the next line */
+            justify-content:space-around;
+            padding: 20px;
+        }
+
+        .col {
+            background: #ffffff;
+            overflow: hidden;
+            padding: 20px;
+            width: 100%; /* Changed to full width on mobile view */
+            margin-bottom: 15px; /* Added spacing between columns */
+            box-sizing: border-box; 
+        }
+
+        input {
+            width: calc(100% - 20px);
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+
+        #sub {
+            height: 50px;
+            text-align: center;
+            border-radius: 14px;
+            cursor: pointer;
+            width: 124px; /* Make button full width on mobile */
+            font-weight: 600;
+            font-size: larger;
+            background: #c9e8f9;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #sub:hover {
+            background-color: rgba(174, 171, 171, 0.904);
+            color: #06022d;
+        }
+
+        h3 {
+            margin-top: 7px;
+            margin-bottom: 3px;
+            text-align: justify;
+            color: #03293f;
+        }
+
+        .ans {
+            color: aliceblue;
+            font-weight: 500;
+            padding-bottom: 20px;
+            font-size: 50px;
+            text-align: center;
+
+        }
+
+        @media (min-width: 768px) {
+            /* Apply styles for screens wider than 768px (PC) */
+            .col {
+                width: 45%; /* Set the width to 45% on larger screens */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-heading">
+        <h1 class="heading_font">Flood Prediction</h1>
+        <div class="description">
+            <p>Enter the environmental data to predict fire risk.</p>
+        </div>
+    </div>
+
+    <form action="{{ url_for('predict_flood')}}" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col">
+                <h3>Moonsoon Intensity in mm</h3>
+                <input id="first" name="MI" type="number" placeholder="Ex: 1.3">
+                <h3>Topograpghy Drainage</h3>
+                <input id="second" name="TD" required="required" placeholder="Ex: 57">
+                <h3>River Management </h3>
+                <input id="third" name="RM" required="required" placeholder="Ex: 18">
+                <h3>Deforestation in %</h3>
+                <input id="fourth" name="deforest" required="required" placeholder="Ex: 30">
+                <h3>Urbanization in %</h3>
+                <input id="fifth" name="urban" required="required" placeholder="Ex: 65.7">
+                <h3>Climate Change in (degrees C or mm for sea level)</h3>
+                <input id="sixth" name="CC" required="required" placeholder="Ex: 3.4">
+                <h3>Agricultural Practices in kg/hectare</h3>
+                <input id="seventh" name="AP" required="required" placeholder="Ex: 25">
+                </div>
+                <div class="col">
+                <h3>Encroachments in </h3>
+                <input id="eighth" name="encroach" required="required" placeholder="Ex: 1.3">
+                <h3>Drainage Systems </h3>
+                <input id="ninth" name="DS" required="required" placeholder="Ex: 3.4">
+                <h3>Coastal Vulnerability </h3>
+                <input id="tenth" name="CV" required="required" placeholder="Ex: 0.5">
+                <h3>Landslides  </h3>
+                <input id="eleventh" name="landslide" required="required" placeholder="Ex: 0.5">
+                <h3>Watersheds  </h3>
+                <input id="twelveth" name="watershed" required="required" placeholder="Ex: 0.5">
+                <h3>Wetland loss in %</h3>
+                <input id="thirteenth" name="wetland" required="required" placeholder="Ex: 0.5">
+                </div>
+            </div>
+        </div>
+        <button id="sub" type="submit">Predict</button>
+    </form>
+    <h3 class="ans">{{ prediction_text }}</h3>
+</body>
+
+</html>

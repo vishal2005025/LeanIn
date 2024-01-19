@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community</title>
+</head>
+
+<body>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
+        $main-blue: #0076bd !default;
+        $main-blue-rgb-015: rgba(0, 118, 189, 0.1) !default;
+
+        body {
+	font-family: "Baloo 2", cursive;
+	font-size: 16px;
+	color: #ffffff;
+	text-rendering: optimizeLegibility;
+	font-weight: initial;
+    margin-top: 0;
+}
+
+
+
+.light {
+	background: #f3f5f7;
+}
+
+a, a:hover {
+	text-decoration: none;
+	transition: color 0.3s ease-in-out;
+}
+
+#pageHeaderTitle {
+	margin: 2rem 0;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 2.5rem;
+}
+
+/* Cards */
+.postcard {
+  flex-wrap: wrap;
+  display: flex;
+  
+  box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
+  border-radius: 10px;
+  margin: 0 0 2rem 0;
+  overflow: hidden;
+  position: relative;
+  color: #ffffff;
+
+	
+	&.light {
+		background-color: #e1e5ea;
+	}
+	
+	.t-dark {
+		color: #18151f;
+	}
+	
+  a {
+    color: inherit;
+  }
+	
+	h1,	.h1 {
+		margin-bottom: 0.5rem;
+		font-weight: 500;
+		line-height: 1.2;
+	}
+	
+	.small {
+		font-size: 80%;
+	}
+
+  .postcard__title {
+    font-size: 1.75rem;
+  }
+
+  .postcard__img {
+    max-height: 180px;
+    width: 100%;
+    object-fit: cover;
+    position: relative;
+  }
+
+  .postcard__img_link {
+    display: contents;
+  }
+
+  .postcard__bar {
+    width: 50px;
+    height: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: #424242;
+    transition: width 0.2s ease;
+  }
+
+  .postcard__text {
+    padding: 1.5rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .postcard__preview-txt {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: justify;
+    height: 100%;
+  }
+
+  .postcard__tagbox {
+    display: flex;
+    flex-flow: row wrap;
+    font-size: 14px;
+    margin: 20px 0 0 0;
+		padding: 0;
+    justify-content: center;
+
+    .tag__item {
+      display: inline-block;
+      background: rgba(83, 83, 83, 0.4);
+      border-radius: 3px;
+      padding: 2.5px 10px;
+      margin: 0 5px 5px 0;
+      cursor: default;
+      user-select: none;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background: rgba(83, 83, 83, 0.8);
+      }
+    }
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(-70deg, #424242, transparent 50%);
+    opacity: 1;
+    border-radius: 10px;
+  }
+
+  &:hover .postcard__bar {
+    width: 100px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .postcard {
+    flex-wrap: inherit;
+
+    .postcard__title {
+      font-size: 2rem;
+    }
+
+    .postcard__tagbox {
+      justify-content: start;
+    }
+
+    .postcard__img {
+      max-width: 300px;
+      max-height: 100%;
+      transition: transform 0.3s ease;
+    }
+
+    .postcard__text {
+      padding: 3rem;
+      width: 100%;
+    }
+
+    .media.postcard__text:before {
+      content: "";
+      position: absolute;
+      display: block;
+      background: #18151f;
+      top: -20%;
+      height: 130%;
+      width: 55px;
+    }
+
+    &:hover .postcard__img {
+      transform: scale(1.1);
+    }
+
+    &:nth-child(2n+1) {
+      flex-direction: row;
+    }
+
+    &:nth-child(2n+0) {
+      flex-direction: row-reverse;
+    }
+
+    &:nth-child(2n+1) .postcard__text::before {
+      left: -12px !important;
+      transform: rotate(4deg);
+    }
+
+    &:nth-child(2n+0) .postcard__text::before {
+      right: -12px !important;
+      transform: rotate(-4deg);
+    }
+  }
+}
+@media screen and (min-width: 1024px){
+		.postcard__text {
+      padding: 2rem 3.5rem;
+    }
+		
+		.postcard__text:before {
+      content: "";
+      position: absolute;
+      display: block;
+      
+      top: -20%;
+      height: 130%;
+      width: 55px;
+    }
+	
+	.postcard.light {
+		.postcard__text:before {
+			background: #e1e5ea;
+		}
+  }
+}
+
+/* COLORS */
+
+.postcard .postcard__tagbox .blue.play:hover {
+	background: $main-blue;
+}
+.blue .postcard__title:hover {
+	color: $main-blue;
+}
+.blue .postcard__bar {nt 50%);
+
+}
+.blue:nth-child(2n)::before {
+
+  background-image: linear-gradient(30deg, $main-blue-rgb-015, transparent 50%);
+
+}
+
+.blue::before {
+	background-image: linear-gradient(-30deg, $main-blue-rgb-015, transparent 50%);
+}
+.blue:nth-child(2n)::before {
+	background-image: linear-gradient(30deg, $main-blue-rgb-015, transparent 50%);
+}
+
+@media screen and (min-width: 769px) {
+	
+
+	.blue::before {
+		background-image: linear-gradient(
+			-80deg,
+			$main-blue-rgb-015,
+			transparent 50%
+		);
+	}
+	.blue:nth-child(2n)::before {
+		background-image: linear-gradient(80deg, $main-blue-rgb-015, transparent 50%);
+	}
+
+}
+
+/* .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        } */
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: revert-layer; font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;font-weight: 600; font-size: xx-large; color: #fff; background-color: rgb(3, 26, 85); padding: 20px;  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px;">Welcome to Our Community Page</h2>
+        <section class="light">
+            <div class="container py-2">
+
+                <article class="postcard light blue">
+                    <a class="postcard__img_link" href="#">
+                        <img class="postcard__img" src="https://www.nationalobserver.com/sites/nationalobserver.com/files/img/2020/09/18/drivingfire.jpg" alt="Image Title" />
+                    </a>
+                    <div class="postcard__text t-dark">
+                        <h1 class="postcard__title blue"><a href="#">10 INSPIRING STORIES THAT PROVE DISASTER RELIEF AND RECOVERY MATTERS</a></h1>
+                        <div class="postcard__subtitle small">
+                            <time datetime="2020-05-25 12:00:00">
+                                <i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
+                            </time>
+                        </div>
+                        <div class="postcard__bar"></div>
+                        <div class="postcard__preview-txt">What is Disaster Relief and Recovery?
+                            Often abbreviated as simply “DRR,” Disaster Relief and Recovery can seem at first glance like one of those vague, high-level acronyms that means “just another program.”
+                            But DRR is far more than a few arbitrary letters strung together.
+                            In fact, if DRR had a single, clear-cut motto, it would be this: We want to provide real help to real people in real crises.</div>
+                        <ul class="postcard__tagbox">
+                            
+                            <li class="tag__item play blue">
+                                <a href="https://www.endeavors.org/impact-stories/10-inspiring-stories-that-prove-disaster-relief-and-recovery-matters/"><i class="fas fa-play mr-2"></i>Read more</a>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="postcard light red">
+                    <a class="postcard__img_link" href="#">
+                        <img class="postcard__img" src="https://www.rcinet.ca/en/wp-content/uploads/sites/3/2018/07/19496780-1.jpg" alt="Image Title" />	
+                    </a>
+                    <div class="postcard__text t-dark">
+                        <h1 class="postcard__title red"><a href="#">India's internal management of disasters has improved & our contribution to global relief has also been significant in the past decade, said experts.</a></h1>
+                        <div class="postcard__subtitle small">
+                            <time datetime="2020-05-25 12:00:00">
+                                <i class="fas fa-calendar-alt mr-2"></i>Wed, July 31st 2020
+                            </time>
+                        </div>
+                        <div class="postcard__bar"></div>
+                        <div class="postcard__preview-txt">Bidanda Chengappa, Secretary, Institute for Contemporary studies Banglore and former research fellow at MP-Institute for Defence Studies & Analyses, New Delhi said that India's serious foray into Disaster Management began in 2005 with the passing of the Disaster Management Act.</div>
+                        <ul class="postcard__tagbox">
+                             
+                            <li class="tag__item play blue">
+                                <a href="https://www.endeavors.org/impact-stories/10-inspiring-stories-that-prove-disaster-relief-and-recovery-matters/"><i class="fas fa-play mr-2"></i>Read more</a>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="postcard light green">
+                    <a class="postcard__img_link" href="#">
+                        <img class="postcard__img" src="https://pisco.meaww.com/bbcceff0-1464-4bf7-9160-3bafe3ca472e.jpg" alt="Image Title" />
+                    </a>
+                    <div class="postcard__text t-dark">
+                        <h1 class="postcard__title green"><a href="#">Disaster Management in India- A Status Report</a></h1>
+                        <div class="postcard__subtitle small">
+                            <time datetime="2020-05-25 12:00:00">
+                                <i class="fas fa-calendar-alt mr-2"></i>Fri, Dec 21st 2020
+                            </time>
+                        </div>
+                        <div class="postcard__bar"></div>
+                        <div class="postcard__preview-txt">India has been traditionally vulnerable to natural disasters on account of its unique geo-climatic conditions. Floods, droughts, cyclones, earthquakes and landslides have been a recurrent phenomena.
+                            About 60% of the landmass is prone to earthquakes of various intensities; over 40 million hectares is prone to floods; about 8% of the total area is prone to cyclones and 68% of the area is susceptible to drought.
+                        </div>
+                        <ul class="postcard__tagbox">
+                            
+                            <li class="tag__item play blue">
+                                <a href="https://www.undp.org/india/publications/disaster-management-india-status-report"><i class="fas fa-play mr-2"></i>Read more</a>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="postcard light yellow">
+                    <a class="postcard__img_link" href="#">
+                        <img class="postcard__img" src="https://miro.medium.com/v2/resize:fit:3800/0*tAAY-S5oNuSSL0GI.jpg" alt="Image Title" />
+                    </a>
+                    <div class="postcard__text t-dark">
+                        <h1 class="postcard__title yellow"><a href="#">A contemporary perspective on the disaster management cycle</a></h1>
+                        <div class="postcard__subtitle small">
+                            <time datetime="2020-05-25 12:00:00">
+                                <i class="fas fa-calendar-alt mr-2"></i>Sun, Jan 27th 2021
+                            </time>
+                        </div>
+                        <div class="postcard__bar"></div>
+                        <div class="postcard__preview-txt">Purpose: 
+                            This study aims to examine the traditional disaster management cycle; discussing the significance of incorporating contemporary management concepts into the disaster management cycle; and proposing a conceptual model that reflects contemporary management insight for the disaster management cycle</div>
+                        <ul class="postcard__tagbox">
+                           
+                            <li class="tag__item play blue">
+                                <a href="https://www.emerald.com/insight/content/doi/10.1108/FS-11-2019-0097/full/html"><i class="fas fa-play mr-2"></i>Read more</a>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+
+
+          
+        <!-- <div class="card">
+            <div class="card__header">
+                <img src="images\c1.png" alt="card__image"
+                    class="card__image" width="600" height="260">
+            </div>
+            <div class="card__body">
+                <h4>Greenery every very</h4>
+                <p>on 28 april there is plantation drive. target to plant at least 500 new plants and give water, soil
+                    to exisiting plants. Location: kothrud pune, maharashtra. timing: 7am onwards</p>
+            </div>
+            <div class="card__footer">
+                <div class="user">
+                    <img src="https://i.pravatar.cc/40?img=1" alt="user__image" class="user__image">
+                    <div class="user__info">
+                        <h5>User1</h5>
+                        <small>10h ago</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card__header">
+                <img src="https://static.vecteezy.com/system/resources/previews/000/593/819/original/vector-ideas-to-reduce-pollution-say-no-to-plastic-bag-that-is-why-the-greenhouse-effect-the-campaign-to-reduce-the-use-of-plastic-bags-to-put.jpg"
+                    alt="card__image" class="card__image" width="600">
+            </div>
+            <div class="card__body">
+                <h4>No to plastic, Cleaning rivers</h4>
+                <p>Plastic is a dangerous substance for our earth. we need to reduce the use and try to recycle more and
+                    more.On 1 May there i drive to clean the xyz river, 8am onwards. Location: mula mutha river</p>
+            </div>
+            <div class="card__footer">
+                <div class="user">
+                    <img src="https://i.pravatar.cc/40?img=2" alt="user__image" class="user__image">
+                    <div class="user__info">
+                        <h5>Jony Doe</h5>
+                        <small>Yesterday</small>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="card">
+            <div class="card__header">
+                <img src="https://th.bing.com/th/id/OIP.jFvT7Ctcpy67Rx2v9AN8cwHaFF?pid=ImgDet&rs=1" alt="card__image"
+                    class="card__image" width="600">
+            </div>
+            <div class="card__body">
+                <span class="tag tag-red">Survey</span>
+                <h4>Take up the survey</h4>
+                <p>to increase the correctness of data surveys are necessary, so there is a drive for basic locality
+                    survey for kothrud region on 3 May, 10 am on wards. It will help Government to understand localiy
+                    and its patterns.</p>
+            </div>
+            <div class="card__footer">
+                <div class="user">
+                    <img src="https://i.pravatar.cc/40?img=3" alt="user__image" class="user__image">
+                    <div class="user__info">
+                        <h5>John Doe</h5>
+                        <small>2d ago</small>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</body>
+
+</html>
