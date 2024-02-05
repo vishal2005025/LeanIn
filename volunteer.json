@@ -1,14 +1,8 @@
 [
-    {
-        "name": "Naman",
-        "phone": 12344545454,
-        "latitude": 19.1209,
-        "longitude": 72.8921
-    },
-    {
-        "name": "Kaustubh",
-        "phone": 12343545454,
-        "latitude": 19.1409,
-        "longitude": 75.8921
-    }
+  {
+    "name": "Harsh Pawar",
+    "phone": "9484357734",
+    "latitude": "19.039",
+    "longitude": "75.10"
+  }
 ]

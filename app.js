@@ -282,6 +282,12 @@ app.post("/dash", function (req, res) {
 });
 
 
+app.get("/chartsjsp", function (req, res) {
+  // res.send("hello world")
+  res.render("charts");
+});
+
+
 app.post("/chartsjsp", function (req, res) {
   //  res.send("jfffkmek");
   var r11homi = String(req.body.homireg);
@@ -305,7 +311,7 @@ app.post("/chartsjsp", function (req, res) {
         regname: r11homi,
         usl: users,
       });
-    });mai
+    }); mai
   }
 });
 
@@ -431,6 +437,31 @@ app.post('/api/send-email', (req, res) => {
       res.status(200).json({ success: true, message: 'Email sent successfully' });
     }
   });
+});
+
+const voluneers = [];
+// API endpoint to handle GET requests for SOS location messages
+app.get('/api/submit', (req, res) => {
+  // console.log(req.body);
+  // console.log("VOLUNTEER API");
+  res.json({ volunteers });
+});
+
+app.post('/api/submit', (req, res) => {
+  const formData = req.body;
+
+
+  try {
+    voluneers = JSON.parse(fs.readFileSync('volunteer.json'));
+  } catch (error) {
+    // Ignore if the file does not exist or is not valid JSON
+  }
+
+  voluneers.push(formData);
+
+  fs.writeFileSync('volunteer.json', JSON.stringify(voluneers, null, 2));
+
+  res.send('Data saved successfully!');
 });
 
 app.listen(process.env.PORT || 8000, function (req, res) {

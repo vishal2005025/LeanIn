@@ -21329,4 +21329,35 @@ dl li {
   flex-grow: 1;
 }
 
+.dashhome-top{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+
+}
+.dash1{
+  width: 50%;
+}
+.dash2{
+  width: 200%;
+  margin-left: 30px;
+}
+
+/* Styles for small screens (up to 768px) */
+@media (max-width: 768px) {
+  .dashhome-top {
+    flex-direction: column;
+  margin-bottom: 20px;
+  align-items: center;
+  }
+
+  .dash1{
+    width: 100%;
+  }
+  .dash2{
+    width: 100%;
+    margin-left: -10px;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */

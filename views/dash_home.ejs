@@ -14,11 +14,53 @@
   <meta name="description" content="This is an example dashboard created using build-in elements and components." />
   <meta name="msapplication-tap-highlight" content="no" />
   <link href="https://demo.dashboardpack.com/architectui-html-free/main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../public/dash.css">
+  <style>
+    .button {
+      border-radius: 4px;
+      background-color: #f4511e;
+      border: none;
+      color: #FFFFFF;
+      text-align: center;
+      font-size: 28px;
+      padding: 20px;
+      width: 200px;
+      transition: all 0.5s;
+      cursor: pointer;
+      margin: 5px;
+    }
+    
+    .button span {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      transition: 0.5s;
+    }
+    
+    .button span:after {
+      content: '\00bb';
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: -20px;
+      transition: 0.5s;
+    }
+    
+    .button:hover span {
+      padding-right: 25px;
+    }
+    
+    .button:hover span:after {
+      opacity: 1;
+      right: 0;
+    }
+    </style>
+    /* Add a class for the charts to control their initial opacity */
 </head>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <body>
-  <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+  <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header" style="margin-top:-20px !important;">
     <div class="app-header header-shadow " style="background-color: black">
       <div class="app-header__logo" style="background-color: black">
         <!-- <div class="logo-src"></div> -->
@@ -158,46 +200,20 @@
                     <i class="metismenu-icon pe-7s-pendrive"></i>Live
                   </a>
                 </li>
-                <!-- <li>
+                <li>
                   <a href="/chartsjsp" style="color: white; text-decoration: none;"
                     onmouseover="this.style.color='black'" onmouseout="this.style.color='white'">
                     <i class="metismenu-icon pe-7s-pendrive"></i>Post Effects
                   </a>
-                </li> -->
-
-                <li>
-                  <form action="/chartsjsp" class="nav-link" id="newChart" method="post">
-                    <button
-                      style="background-color: transparent; cursor: pointer; border: none; color: white; width: 100%; text-align: left; padding: 10px;">
-                      <span class="menu-title">
-                        <b>Post Effects</b>
-                      </span>
-                      <i class="mdi mdi-chart-bar menu-icon"></i>
-                    </button>
-                  </form>
-
-                  <style>
-                    @media (max-width: 768px) {
-                      #newChart button {
-                        width: 100%;
-                        /* Set width to 100% when the screen size is 768 pixels or less */
-                        text-align: left;
-                        /* Align text to the left for better readability */
-                        padding-left: 20px;
-                        /* Add some left padding for better spacing */
-                      }
-                    }
-                  </style>
-
                 </li>
               </div>
             </ul>
           </div>
         </div>
       </div>
-      <div class="app-main__outer">
-        <div class="app-main__inner" style="background-color: rgb(3, 26, 85);">
-          <div class="app-page-title" style="background-color: rgb(3, 26, 85); color: aliceblue;">
+      <div class="app-main__outer" >
+        <div class="app-main__inner" style="background-color: #000">
+          <div class="app-page-title" style="background-color: #000; color: aliceblue;")>
             <div class="page-title-wrapper">
               <!-- <div class="page-title-heading "
                 style="font-size: xx-large; font-weight: 600; text-shadow: 2px 2px 4px rgba(118, 176, 186, 0.5);"> -->
@@ -206,10 +222,10 @@
                   </div> -->
               <div class="row col-12">
                 <div class="col-9"
-                  style="font-size: xx-large; font-weight: 600; text-shadow: 2px 2px 4px rgba(118, 176, 186, 0.5);">
+                  style="font-size: 40px; font-weight: 700; text-shadow: 2px 2px 4px rgba(118, 176, 186, 0.5);">
                   Analytics Dashboard</div>
                 <div class="col-3 d-flex justify-content-end">
-                  <button class="btn btn-danger w-50 p-2">ALERT</button>
+                  <button class="btn btn-danger w-10 p-2 button"><span>ALERT</span></button>
                   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                   <script>
                     $(document).ready(function () {
@@ -246,7 +262,7 @@
             <!-- First Column -->
             <div class="col-md-12 col-lg-6">
               <div class="mb-3 card" style="background-color: white">
-                <div>
+                <div >
                   <canvas id="myChart"></canvas>
                 </div>
                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -320,6 +336,7 @@
             <div class="col-md-12 col-lg-6">
               <div class="mb-3 card" style="background-color: white">
                 <div>
+                  
                   <canvas id="myChart2"></canvas>
                 </div>
                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -751,9 +768,10 @@
 
           <div class="row">
             <div class="col-md-12">
+              <p style="color: #fff;text-align: center;font-size: 40px;font-weight: 800;"> Our Volunteers</p>
               <div class="main-card mb-3 card">
-                <div class="card-header">
-                  Our Volunteers
+                <div class="card-header" >
+               
                   <div class="btn-actions-pane-right">
                     <div role="group" class="btn-group-sm btn-group">
                       <button class="active btn btn-focus">Last Week</button>

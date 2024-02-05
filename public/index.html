@@ -15,7 +15,7 @@
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/finance.css">
-
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <!-- Leaflet Map -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
         integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
@@ -37,7 +37,6 @@
         }
     }
 </script>
-
 </head>
 
 <body>
@@ -178,8 +177,15 @@
                                 }
                             </script>
 
-                            <button class="btn btn-gradient-primary me-2">Search</button>
-
+                            <button id="redirectButton" class="btn btn-gradient-primary me-2">Search</button>
+                            <script>
+                                $(document).ready(function () {
+                                    $("#redirectButton").click(function () {
+                                        // Redirect to a new page
+                                        window.location.href = 'http://localhost:8000/dashhome';  // Replace with your desired URL
+                                    });
+                                });
+                            </script>
                             <input type="text" name="n33" placeholder="2nd numm" id="ttid2"
                                 style="opacity: 0;visibility: hidden;">
                             <br /><br />

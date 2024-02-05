@@ -60,8 +60,8 @@
     <div class="container-fluid page-body-wrapper">
    
       <!-- partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
+      <div class="main-panel" style="width: -webkit-fill-available">
+        <div class="content-wrapper" style="background-color: #000;">
 
           <div class="row">
 
@@ -167,15 +167,14 @@
                 letter-spacing: 1px;
               }
             </style>
-
-            <div class="col-md-5 grid-margin stretch-card" style=" width: 58%; height: 20rem;">
+            <div class="dashhome-top">
+            <div class="dash1">
               <div class="course">
                 <div class="course-preview">
 
                   <p style="color: rgb(252, 235, 235);font-size: 20px;">
                     <b>
-                      <% usl.forEach( users=>{ %> <%= users.reg_label %>
-                          <% }) %>
+                   
                     </b>
                   </p>
 
@@ -185,16 +184,10 @@
 
                   <button type="button" onclick="myFunction()" style="width: 0;visibility: hidden;opacity: 0;"></button>
 
-                  <script>
-                    myFunction();
-                    function myFunction() {
-                      document.getElementById("myP").style.color = '<% usl.forEach( users=>{ %> <%= users.reg_color %><% }) %>';
-                    }
-                  </script>
+                 
                   <p style="color: rgb(252, 235, 235);font-size: 12px;">
                     <b>
-                      <% usl.forEach( users=>{ %> <%= users.reg_data1 %>
-                          <% }) %>
+                    
                     </b>
                   </p>
 
@@ -234,40 +227,20 @@
                     </div>
 
 
-                    <script>
-
-                      var elem = document.getElementById("mybar");
-                      var width = 1;
-                      var id = setInterval(frame, 10)
-
-                      function frame() {
-                        if (width >= 100) {
-                          clearInterval(id);
-                        } else {
-                          width++;
-                          elem.style.width = '<% usl.forEach( users=>{ %> <%= users.chg_data %>  <% }) %>';
-                          document.getElementById("incvalue").innerHTML = "-";
-
-                        }
-                      }
-
-                    </script>
                     <span class="progress-text" style="color: rgb(15, 14, 14);font-size: 12px">
                       <b> 6/9 Challenges</span><b>
                       </span>
 
                   </div>
                   <h6 style="color: rgb(0, 0, 0);">STATE:
-                    <% usl.forEach( users=>{ %> <%= users.state %>
-                        <% }) %>
+                    
                   </h6>
                   <br />
 
                   <h6 style="opacity:0;">c</h6>
                   <h2 style="color: black;"><b>REGION:
 
-                      <% usl.forEach( users=>{ %> <%= users.reg_name %>
-                          <% }) %>
+                     
                             <b></h2><br />
                   <span style="font-size: 14px;">Increased by 60%</span><span
                     style="opacity: 0;">xnjn</span><span></span>
@@ -284,7 +257,7 @@
 
             <!-- ------------ Form -------------------------------- -->
 
-            <div class="col-md-5 grid-margin stretch-card" style="float:right; margin-top: -21rem;">
+            <div class="dash2">
               <div class="card" style="border-radius: 0.7rem;">
                 <div class="card-body">
                   <h4 class="card-title">Region</h4>
@@ -357,7 +330,7 @@
             </div>
 
           </div>
-
+        </div>
           <!-- ------------------------- Map ------------------------------------ -->
           <div class="row">
 
@@ -380,7 +353,7 @@
               <div class="card-body">
                 <!-- <h4 class="card-title">Hiii</h4> -->
 
-                <div class="row" style="background-color: rgb(201, 199, 199);">
+                <div class="row" style="background-color:#000;">
 
                   <!-- -------First---------- -->
 
@@ -560,13 +533,7 @@
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
-        <footer class="footer">
-          <div class="container-fluid d-flex justify-content-between">
-            <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Webscalers</span>
-
-
-          </div>
-        </footer>
+       
       </div>
       <!-- main-panel ends -->
     </div>
@@ -634,5 +601,5 @@
 
 
 </body>
-
 </html>
+

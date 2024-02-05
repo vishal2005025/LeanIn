@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
@@ -112,17 +113,25 @@ body {
 <body>
     <h1 id="title">Volunteer Registration Form</h1>
     <form id="survey-form">
-        <label class="form-label" for="name" id="name-label">Name</label>
+        <label class="form-label" for="name" id="name-label">Name*</label>
         <input class="user-input" id="name" type="text" placeholder="John Doe" required>
+        <label class="form-label" for="address">Phone No.*</label>
+        <input class="user-input" id="phone" type="text" placeholder="8921212121" required>
 
         <label class="form-label" for="email" id="email-label">Email</label>
-        <input class="user-input" id="email" type="email" placeholder="jdoe@email.com" required>
+        <input class="user-input" id="email" type="email" placeholder="jdoe@email.com" >
 
         <label class="form-label" for="number" id="number-label">Age</label>
-        <input class="user-input" id="number" type="number" min="1" max="99" placeholder="0">
+        <input class="user-input" id="number" type="number" min="1" max="99" placeholder="21">
 
         <label class="form-label" for="address">Address</label>
-        <input class="user-input" id="address" type="text" placeholder="201, Shiv Sadan..." required>
+        <input class="user-input" id="address" type="text" placeholder="201, Shiv Sadan...">
+
+        <label class="form-label" for="address">Latitude*</label>
+        <input class="user-input" id="lat" type="text" placeholder="19.1209" required>
+        <label class="form-label" for="address">Longitude*</label>
+        <input class="user-input" id="long" type="text" placeholder="17.1201" required>
+        
 
         <label class="form-label">Do you have any health issue?</label>
 
@@ -148,8 +157,51 @@ body {
         <textarea class="user-input" id="comment-label" maxlength="600" placeholder="Additional comments here..."></textarea>
 
         <div class="submit-holder">
-            <button id="submit" type="submit">Submit</button>
+
+            <button id="submit" type="button">Submit</button>
+            <!-- <button id="submit" type="button">Access Location</button>
+            <p>*Tap "Access location" if you are at current residential address.</p> -->
         </div>
     </form>
+
+    <script>
+        $(document).ready(function () {
+            $("#submit").click(function () {
+                var name = $("#name").val();
+                var email = $("#email").val();
+                var lat  =  $("#lat").val();
+                var long = $("#long").val();
+                var phone = $("#phone").val();
+
+                // Add other form field values here
+
+                var formData = {
+                    name: name,
+                    phone: phone,
+                    latitude: lat,
+                    longitude: long
+                    
+                    // Add other form field values here
+                };
+                // console.log(formData);
+                alert("Submitted successfully");
+
+                $.ajax({
+    type: 'POST',
+    url: 'http://localhost:8000/api/submit',
+    contentType: 'application/json',
+    data: JSON.stringify(formData),
+    success: function (response) {
+        console.log(response);
+    },
+    error: function (error) {
+        console.log(error);
+    }
+});
+
+            });
+        });
+      
+    </script>
 </body>
 </html>
